@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Spar AI - Master Objections. Dominate Sales.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        electric: '#0066ff',
+                        silver: '#e0e0e0',
+                        dark: '#050505',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { 'box-shadow': '0 0 5px rgba(0, 102, 255, 0.7)' },
+                            '100%': { 'box-shadow': '0 0 20px rgba(0, 102, 255, 0.9)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0.9) 0%, rgba(0, 0, 0, 1) 70%);
+        }
+        
+        .glossy-btn {
+            background: linear-gradient(135deg, rgba(224, 224, 224, 0.9) 0%, rgba(0, 102, 255, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glossy-btn:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.4) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+        
+        .glossy-btn:hover:before {
+            left: 100%;
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, rgba(15,15,15,1) 0%, rgba(5,5,5,1) 100%);
+            border: 1px solid rgba(224, 224, 224, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.2);
+            border-color: rgba(0, 102, 255, 0.4);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .icon-wrapper {
+            background: linear-gradient(135deg, rgba(0,102,255,0.15) 0%, rgba(0,68,255,0.15) 100%);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+        
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.6);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 102, 255, 0.6);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 102, 255, 0.8);
+        }
+        
+        .industry-chip {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.15);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 20px;
+            padding: 6px 12px;
+            margin: 4px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .industry-chip:hover {
+            background: rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .newsletter-benefit {
+            background: linear-gradient(90deg, rgba(0,102,255,0.1) 0%, rgba(0,68,255,0.1) 100%);
+            border-left: 3px solid rgba(0, 102, 255, 0.7);
+        }
+        
+        /* Form success message */
+        .form-success {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 102, 255, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transform: translateX(150%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .form-success.show {
+            transform: translateX(0);
+        }
+        
+        .form-success i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #e0e0e0, #0066ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-border {
+            border: 1px solid transparent;
+            border-image: linear-gradient(90deg, #e0e0e0, #0066ff) 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-electric text-2xl font-bold tracking-tight">SALES SPAR <span class="text-silver">AI</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#cta" class="glossy-btn text-black font-bold py-2 px-6 rounded-full text-sm transform transition-all duration-300 hover:scale-105">
+                        GET EARLY ACCESS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Message (hidden by default) -->
+    <div id="formSuccess" class="form-success">
+        <i class="fas fa-check-circle"></i>
+        <span>Thank you for joining Sales Spar AI Early Access!</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 parallax">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight animate-fade-in gradient-text">
+                <span>MASTER INDUSTRY-SPECIFIC</span><br>
+                <span>OBJECTION HANDLING</span><br>
+                <span>LIKE A TOP PERFORMER</span>
+            </h1>
+            
+            <!-- App Visual Moved Here -->
+            <div class="relative mx-auto mb-10 max-w-2xl gradient-border animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="relative rounded-xl overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric/15 to-transparent"></div>
+                    <div class="relative z-10 p-1 bg-gray-900">
+                        <div class="h-8 flex items-center px-3 space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="h-96 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+                            <div class="text-center p-6">
+                                <div class="flex justify-center mb-4">
+                                    <div class="bg-gray-800 rounded-full px-4 py-1 text-sm text-electric">
+                                        <i class="fas fa-industry mr-2"></i> Sales Spar AI
+                                    </div>
+                                </div>
+                                <i class="fas fa-robot text-electric text-5xl mb-4"></i>
+                                <h3 class="text-xl font-bold text-silver mb-2">INDUSTRY-SPECIFIC TRAINING</h3>
+                                <p class="text-silver opacity-80 mb-4">Objection Handling Practice</p>
+                                <div class="bg-gray-800 rounded-lg p-4 mb-4">
+                                    <p class="text-silver text-sm">"We're concerned about the learning curve for our non-technical team members."</p>
+                                </div>
+                                <div class="flex gap-2 justify-center">
+                                    <button class="bg-gray-800 hover:bg-gray-700 text-silver px-4 py-2 rounded-lg text-sm transition-colors duration-300">
+                                        View Tactics
+                                    </button>
+                                    <button class="bg-electric hover:bg-electric/90 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300">
+                                        Respond Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-lg md:text-2xl text-silver max-w-4xl mx-auto mb-10 animate-slide-up" style="animation-delay: 0.6s;">
+                Train against real-world objections tailored to your industry with AI that learns and adapts to your responses. 
+                <span class="text-electric font-medium">Sales Spar AI</span> gives you the hyper-relevant practice top closers demand.
+            </p>
+            
+            <div class="mb-8 animate-slide-up" style="animation-delay: 0.9s;">
+                <p class="text-silver mb-4">Choose your industry during signup:</p>
+                <div class="flex flex-wrap justify-center max-w-2xl mx-auto">
+                    <span class="industry-chip">SaaS</span>
+                    <span class="industry-chip">Insurance</span>
+                    <span class="industry-chip">Real Estate</span>
+                    <span class="industry-chip">Automotive</span>
+                    <span class="industry-chip">Medical Sales</span>
+                    <span class="industry-chip">Financial Services</span>
+                    <span class="industry-chip">Manufacturing</span>
+                    <span class="industry-chip">Retail</span>
+                </div>
+            </div>
+            
+            <div class="animate-slide-up" style="animation-delay: 1.2s;">
+                <form action="https://submit-form.com/s3hWFLwC8" method="POST" id="early-access-form" class="mb-4">
+                    <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="📧 Your Email Address" 
+                            required
+                            class="flex-grow px-5 py-3 rounded-full bg-gray-900 border border-gray-700 text-white focus:border-electric transition-colors duration-300"
+                        >
+                        <button 
+                            type="submit"
+                            class="glossy-btn text-black font-bold py-3 px-8 rounded-full text-sm md:text-base transform transition-all duration-300 hover:scale-105 animate-glow"
+                        >
+                            GET EARLY ACCESS <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">
+                        You'll also receive tactical sales tips, objection handling strategies, and expert insights.
+                    </p>
+                </form>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.getElementById('early-access-form');
+                        form.addEventListener('submit', async function (e) {
+                            e.preventDefault(); // Stop the default form submission
+                            const formData = new FormData(form);
+                            
+                            const plainFormData = Object.fromEntries(formData.entries());
+                            const formDataJsonString = JSON.stringify(plainFormData);
+                            
+                            try {
+                                const response = await fetch(form.action, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "Accept": "application/json"
+                                    },
+                                    body: formDataJsonString,
+                                });
+                                
+                                if (response.ok) {
+                                    form.innerHTML = `
+                                        <div class="text-center animate-fade-in-up">
+                                            <p class="text-silver text-2xl font-bold">
+                                                ✅ Thank you for joining Sales Spar AI Early Access!
+                                            </p>
+                                            <p class="text-gray-400 mt-2 text-sm">
+                                                Get ready to sharpen your objection handling skills and dominate your sales career.
+                                            </p>
+                                        </div>
+                                    `;
+                                } else {
+                                    form.innerHTML = `
+                                        <div class="text-center animate-fade-in-up">
+                                            <p class="text-red-500 text-xl font-bold">
+                                                ❌ Oops, something went wrong. Please try again later.
+                                            </p>
+                                        </div>
+                                    `;
+                                }
+                            } catch (error) {
+                                form.innerHTML = `
+                                    <div class="text-center animate-fade-in-up">
+                                        <p class="text-red-500 text-xl font-bold">
+                                            ❌ Network error. Please try again later.
+                                        </p>
+                                    </div>
+                                `;
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-silver">
+                INDUSTRY-SPECIFIC <span class="text-electric">OBJECTION MASTERY</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card rounded-xl p-8 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-industry text-electric text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-electric">Tailored to Your Field</h3>
+                    <p class="text-silver text-center opacity-90">
+                        Select your industry during signup to receive objections based on real-world data from your specific market. No more generic scenarios.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card rounded-xl p-8 animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-database text-electric text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-electric">AI-Powered Realism</h3>
+                    <p class="text-silver text-center opacity-90">
+                        Our AI generates objections from thousands of actual sales conversations in your industry, ensuring hyper-relevant training.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card rounded-xl p-8 animate-fade-in" style="animation-delay: 0.6s;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-bolt text-electric text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4 text-electric">Instant Tactical Feedback</h3>
+                    <p class="text-silver text-center opacity-90">
+                        Get immediate analysis on your responses with actionable suggestions to improve your objection handling skills.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-black parallax">
+        <div class="max-w-4xl mx-auto text-center animate-slide-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                <span class="text-silver">YOUR INDUSTRY'S</span> <span class="text-electric">TOUGHEST OBJECTIONS</span>
+            </h2>
+            <p class="text-silver opacity-90 mb-6 max-w-3xl mx-auto">
+                Sales Spar AI delivers the exact objections you'll face in your industry, with immediate tactical feedback to sharpen your responses.
+            </p>
+            <ul class="space-y-4 mb-8 max-w-xl mx-auto">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-electric mt-1 mr-3"></i>
+                    <span class="text-silver"><strong>For SaaS:</strong> "Your platform seems too complex for our team"</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-electric mt-1 mr-3"></i>
+                    <span class="text-silver"><strong>For Insurance:</strong> "I can get a better rate elsewhere"</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-electric mt-1 mr-3"></i>
+                    <span class="text-silver"><strong>For Real Estate:</strong> "We're waiting for prices to come down"</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-electric mt-1 mr-3"></i>
+                    <span class="text-silver"><strong>For Medical Sales:</strong> "Our current vendor gives us better terms"</span>
+                </li>
+            </ul>
+            <p class="text-electric font-medium">
+                Plus hundreds more industry-specific objections - all with AI-powered tactical responses.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-28 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 animate-fade-in">
+                <span class="text-silver">READY TO MASTER YOUR INDUSTRY'S</span> <span class="text-electric">TOUGHEST OBJECTIONS?</span>
+            </h2>
+            <p class="text-lg text-silver opacity-90 mb-10 max-w-3xl mx-auto animate-slup-up" style="animation-delay: 0.3s;">
+                Join the exclusive early access list and be among the first to experience Sales Spar AI's industry-specific training. Limited spots available.
+            </p>
+            <div class="animate-slup-up" style="animation-delay: 0.6s;">
+                <form action="https://submit-form.com/s3hWFLwC8" method="POST" id="cta-early-access-form">
+                    <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="📧 Your Email Address" 
+                            required
+                            class="flex-grow px-5 py-3 rounded-full bg-gray-900 border border-gray-700 text-white focus:border-electric transition-colors duration-300"
+                        >
+                        <button 
+                            type="submit"
+                            class="glossy-btn text-black font-bold py-3 px-8 rounded-full text-sm md:text-base transform transition-all duration-300 hover:scale-105 animate-glow"
+                        >
+                            GET EARLY ACCESS <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">
+                        You'll also receive tactical sales tips, objection handling strategies, and expert insights.
+                    </p>
+                </form>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.getElementById('cta-early-access-form');
+                        form.addEventListener('submit', async function (e) {
+                            e.preventDefault(); // Stop the default form submission
+                            const formData = new FormData(form);
+                            
+                            const plainFormData = Object.fromEntries(formData.entries());
+                            const formDataJsonString = JSON.stringify(plainFormData);
+                            
+                            try {
+                                const response = await fetch(form.action, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "Accept": "application/json"
+                                    },
+                                    body: formDataJsonString,
+                                });
+                                
+                                if (response.ok) {
+                                    form.innerHTML = `
+                                        <div class="text-center animate-fade-in-up">
+                                            <p class="text-silver text-2xl font-bold">
+                                                ✅ Thank you for joining Sales Spar AI Early Access!
+                                            </p>
+                                            <p class="text-gray-400 mt-2 text-sm">
+                                                Get ready to sharpen your objection handling skills and dominate your sales career.
+                                            </p>
+                                        </div>
+                                    `;
+                                } else {
+                                    form.innerHTML = `
+                                        <div class="text-center animate-fade-in-up">
+                                            <p class="text-red-500 text-xl font-bold">
+                                                ❌ Oops, something went wrong. Please try again later.
+                                            </p>
+                                        </div>
+                                    `;
+                                }
+                            } catch (error) {
+                                form.innerHTML = `
+                                    <div class="text-center animate-fade-in-up">
+                                        <p class="text-red-500 text-xl font-bold">
+                                            ❌ Network error. Please try again later.
+                                        </p>
+                                    </div>
+                                `;
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-electric text-2xl font-bold tracking-tight">SALES SPAR <span class="text-silver">AI</span></span>
+            <p class="text-gray-500 text-sm mt-4 max-w-md mx-auto">The AI sales training platform for modern sales professionals.</p>
+            <p class="text-gray-600 text-xs mt-8">&copy; 2025 Sales Spar AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation trigger on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Parallax effect
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax');
+                
+                parallaxElements.forEach(element => {
+                    element.style.backgroundPositionY = (scrollPosition * 0.5) + 'px';
+                });
+            });
+            
+            // Form submission handling with success message
+            const forms = document.querySelectorAll('form');
+            const successMessage = document.getElementById('formSuccess');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+                    
+                    // Reset form after submission (optional)
+                    setTimeout(() => {
+                        form.reset();
+                    }, 1000);
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=gcornelius256/sales-spar-ai" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
